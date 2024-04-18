@@ -1,14 +1,21 @@
 
 class Dice:
-    def __init__(self,nb_faces, advantage=False):
+    def __init__(self,nb_faces, advantage='non'):
         self.nb_faces = nb_faces
         self.faces = []
         self.advantage = advantage
-        if self.advantage:
+        self.advantage_verif()
+
+    def advantage_verif(self):
+        if self.advantage == 'a':
             for face in range(self.nb_faces):
                 for i in range(2 * face + 1):
                     self.faces.append(face + 1)
-        else:
+        elif self.advantage == 'd':
+            for face in range(self.nb_faces):
+                for i in range(2 * face+1):
+                    self.faces.append(self.nb_faces-face)
+        elif self.advantage == 'non':
             self.faces = list(range(1, self.nb_faces + 1))
 
         
