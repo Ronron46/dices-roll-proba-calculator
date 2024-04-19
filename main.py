@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from objects.data_cleaner import DataCleaner
 
 
-dice_list=input('entrer la liste de dé à lancer, si vous voulez l\'avantage, ajouter un "a" collé au nombre par un point, pour un désavantage, mettez un "d". Exemple: 4.a,3,6,12.d...')
+dice_list=input('entrer la liste de dé à lancer, si vous voulez l\'avantage, ajouter un "a" collé au nombre par une virgule, pour un désavantage, mettez un "d". Exemple: 4,a 3 6 12,d...')
 clean_dice_list=DataCleaner(dice_list).cleaning()
 bucket=DiceBucket(clean_dice_list)
 tab=Counter(bucket)
