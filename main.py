@@ -8,14 +8,13 @@ import time
 
 
 dice_list=input('entrer la liste de dé à lancer, si vous voulez l\'avantage, ajouter un "a" collé au nombre par une virgule, pour un désavantage, mettez un "d". Exemple: 4,a 3 6 12,d...')
-start_time=time.time()
+time_start=time.time()
 clean_dice_list=DataCleaner(dice_list).cleaning()
 bucket=DiceBucket(clean_dice_list)
 tab=Counter(bucket)
-print("--- il a fallu %s secondes ---" % (time.time()-start_time))
+print('il a fallu', time.time() - time_start, ' secondes')
 target=input('quelle est la valeur cible?')
 print("Vous avez ", Calc_proba(tab, int(target)).proba()*100, "% de chance de réussir")
 print('Vous avez ', Calc_proba(tab,int(target)).proba_strict_equal()*100, '% de chance d\'obtenir exactement', target)
-
 
 Graphe(tab).draw_graph()
