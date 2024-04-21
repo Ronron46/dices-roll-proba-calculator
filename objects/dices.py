@@ -38,16 +38,3 @@ class DiceBucket:
         self.res_max = 0
         for i in self.nb_face:
             self.res_max += i
-    
-    def cartesian_sum(self,l1,l2):
-        res=[]
-        for x in l1:
-            for y in l2:   
-                res.append(x+y)
-        return res
-            
-    def dices_roll(self):
-        result=[0]
-        for dice in self.face_number:
-            result=self.cartesian_sum(result,dice)
-        return result
