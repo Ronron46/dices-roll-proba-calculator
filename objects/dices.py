@@ -28,10 +28,10 @@ class DiceBucket:
         self.set_res_max()
     
     def set_dices(self):
-        self.face_number = []
+        self.dices_list = []
         self.nb_face = []
         for i in self.dices:
-            self.face_number.append(i.faces)
+            self.dices_list.append(i.faces)
             self.nb_face.append(i.nb_faces)
     
     def set_res_max(self):

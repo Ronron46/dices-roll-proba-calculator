@@ -1,7 +1,7 @@
 class Calc_proba:
     def __init__(self, counter,target):
         self.res_min = counter.res_min
-        self.count = counter.get_result()
+        self.count = counter.counter
         self.target = target
 
     def proba(self):

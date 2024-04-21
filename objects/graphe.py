@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 class Graphe:
     def __init__(self, counter):
-        self.count = counter.get_result()      
+        self.count = counter.counter  
         self.res_max = counter.res_max
         self.res_min = counter.res_min  
         self.norm() 
