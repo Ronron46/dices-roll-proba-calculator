@@ -84,7 +84,7 @@ def pascal(n,k,tab):
                 for y in range(int(x/2)+1):
                     a.append(a[int(x/2)-y])            
             tab.append(a)
-        return tab
+        return tab[n][k]
 
 
 
@@ -173,8 +173,13 @@ from objects.graphe import Graphe
 #         return  output
 
 
-def diver(n_dice,dice,val_min,mem,tab):
-    actual_face = dice
+def diver(n_dice,dice,mem,tab,dice_list):
+    aux_list=dice_list.copy()
+    actual_face = dice 
+    if len(aux_list) >=2:
+        if int(aux_list[1][1]) == actual_face:
+            n_dice += int(aux_list[1][0])
+            aux_list.pop(1)   
     dice -= 1
     if dice == 0:
         return { actual_face*n_dice : 1}
@@ -182,7 +187,7 @@ def diver(n_dice,dice,val_min,mem,tab):
         output={}
         for k in range(n_dice+1):
             if (n_dice-k,dice) not in mem:
-                mem[n_dice-k,dice]=diver(n_dice-k,dice,val_min,mem,tab)
+                mem[n_dice-k,dice]=diver(n_dice-k,dice,mem,tab,aux_list)
             for value, weight in mem[n_dice-k,dice].items():
                 value += actual_face *k
                 weight *= pascal(n_dice,k,tab)
@@ -205,8 +210,8 @@ def ui(n_dice,dice):
     tab=[]
     time_start=time.time()
     res=[]
-    a=diver(n_dice,dice,n_dice,mem,tab)
-    print(a)
+    dice_list=[['1','20'],['2','4']]
+    a=diver(int(dice_list[0][0]),int(dice_list[0][1]),mem,tab,dice_list)
     for i in a.keys():
         res.append(a[i])
     timer=time.time() - time_start

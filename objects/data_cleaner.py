@@ -4,18 +4,11 @@ from objects.dices import Dice
 class DataCleaner:
     def __init__(self, data):
         self.data = data
-    
+        self.cleaning()
     def cleaning(self):
-        list1 = self.data.split(" ")
-        aux = []
-        dice_list = []
-        for i in list1:
-            aux = i.split(",")
-            if len(aux) == 2:
-                if aux[1] == 'a':
-                    dice_list.append(Dice(int(aux[0]) , 'a'))
-                elif aux[1] == 'd':
-                    dice_list.append(Dice(int(aux[0]), 'd'))
-            else:
-                dice_list.append(Dice(int(aux[0])))
-        return dice_list
+        self.cleaned_data=self.data.replace(' ','')
+        self.cleaned_data=self.cleaned_data.split('+')
+        self.res=[]
+        for dice in self.cleaned_data:
+            self.res.append(dice.split('d'))
+        self.res.sort(key=lambda x : int(x[1]), reverse=True)

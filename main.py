@@ -10,7 +10,9 @@ from functions.diver import diver
 from functions.Pascal import pascal
 from functions.proba import proba
 from functions.control import control
-
+from objects.data_cleaner import DataCleaner
+from functions.zero_counter import zero_counter
+from objects.graphe import Graphe
 
 # dice_list=input('entrer la liste de dé à lancer, si vous voulez l\'avantage, ajouter un "a" collé au nombre par une virgule, pour un désavantage, mettez un "d". Exemple: 4,a 3 6 12,d...')
 # time_start=time.time()
@@ -25,12 +27,17 @@ from functions.control import control
 
 # Graphe(tab).draw_graph()
 
-nb_dice=int(input("combien de dé voulez vous lancez?"))
-dice=int(input("quel est la taille des dés que vous voulez lancer?"))
+data=input("entre les dés au format '1d4 + 1d8 etc...'")
 
-count, timer, res_min=control(nb_dice,dice)
+dice_list=DataCleaner(data)
+
+count, timer, res_min=control(dice_list.res)
 target=int(input("quel est la cible?"))
 prob=proba(count, target, res_min)
-combi=sum(count)
-print("vous avez", prob*100, "% de chances de reussir" )
+combi=zero_counter(sum(count))
+graphe=Graphe(count)
+
+print("vous avez", prob*100, "% de chances de faire plus que ", target )
 print("il a fallu ", timer, 'secondes pour calculer les', combi, "combinaisons")
+graphe.draw_graph()
+
