@@ -8,7 +8,7 @@ import time
 
 from functions.diver import diver
 from functions.Pascal import pascal
-from functions.proba import proba
+from objects.proba import Calc_proba
 from functions.control import control
 from objects.data_cleaner import DataCleaner
 from functions.zero_counter import zero_counter
@@ -32,12 +32,12 @@ data=input("entre les dés au format '1d4 + 1d8 etc...'")
 dice_list=DataCleaner(data)
 
 count, timer, res_min=control(dice_list.res)
+print(res_min)
 target=int(input("quel est la cible?"))
-prob=proba(count, target, res_min)
 combi=zero_counter(sum(count))
 graphe=Graphe(count)
-
-print("vous avez", prob*100, "% de chances de faire plus que ", target )
+prob=Calc_proba(count,res_min,target)
+print("vous avez", prob.proba()*100, "% de chances de faire plus que ", target )
 print("il a fallu ", timer, 'secondes pour calculer les', combi, "combinaisons")
 graphe.draw_graph()
 
