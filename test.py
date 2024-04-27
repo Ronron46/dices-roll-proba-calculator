@@ -205,31 +205,66 @@ def proba(count, target, res_min):
     return aux/sum(count)
 
 
-def ui(n_dice,dice):
+class DataCleaner:
+    def __init__(self, data):
+        self.data = data
+        self.cleaning()
+    def cleaning(self):
+        self.cleaned_data=self.data.replace(' ','')
+        self.cleaned_data=self.cleaned_data.split('+')
+        self.res=[]
+        for dice in self.cleaned_data:
+            self.res.append(dice.split('d'))
+        self.res.sort(key=lambda x : int(x[1]), reverse=True)
+
+
+def ui(dice_list):
     mem={}
     tab=[]
     time_start=time.time()
     res=[]
-    dice_list=[['1','20'],['2','4']]
+    res_min=0
+    for dice in dice_list:
+        res_min += int(dice[0]) 
     a=diver(int(dice_list[0][0]),int(dice_list[0][1]),mem,tab,dice_list)
     for i in a.keys():
         res.append(a[i])
     timer=time.time() - time_start
 
-    return res, timer, n_dice
+    return res, timer, res_min
+
+
+test_list=[]
+for i in range(100):
+    test_list.append(2*i+1)
+
+
+
+
 
 def main():
-    nb_dice=int(input("combien de dé voulez vous lancez?"))
-    dice=int(input("quel est la taille des dés que vous voulez lancer?"))
+    data=input("entre les dés au format '1d4 + 1d8 etc...'")
+    time_oi=time.time()
+    dice_list=DataCleaner(data)
+    count, timer, res_min=ui(dice_list.res)
+    res=[]
+    for i in range(len(test_list)+len(count)-1):
+        res.append(0)
 
-    count, timer, res_min=ui(nb_dice,dice)
+    # target=int(input("quel est la cible?"))
 
-    target=int(input("quel est la cible?"))
+    # prob=proba(count, target, res_min)
+    print(len(count),len(test_list))
+    # combi=sum(count)
+    # print(count)
+    # print("vous avez", prob*100, "% de chances de reussir" )
+    # print("il a fallu ", timer, 'secondes pour calculer les', combi, "combinaisons")
+    for x in range(len(count)):
+        for y in range(len(test_list)):
+            res[x+y] += count[x]*test_list[y]
+    print("ça a prit : ",time.time() - time_oi)
+    graphe=Graphe(res)
+    graphe.draw_graph()
 
-    prob=proba(count, target, res_min)
-
-    combi=sum(count)
-    print(count)
-    print("vous avez", prob*100, "% de chances de reussir" )
-    print("il a fallu ", timer, 'secondes pour calculer les', combi, "combinaisons")
+    
 
