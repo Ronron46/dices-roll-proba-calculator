@@ -1,4 +1,4 @@
-from functions.rec_pop import rec_pop
+from calculator.services.dice_program.functions.rec_pop import rec_pop
 class DataCleaner:
     def __init__(self, data):
         self.data = data

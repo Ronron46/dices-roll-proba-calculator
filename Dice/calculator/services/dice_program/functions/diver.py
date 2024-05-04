@@ -1,4 +1,4 @@
-from functions.Pascal import pascal
+from calculator.services.dice_program.functions.Pascal import pascal
 
 def diver(n_dice,dice,mem,tab,dice_list):
     aux_list=dice_list.copy()

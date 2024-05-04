@@ -1,8 +1,7 @@
-from functions.diver import diver
-from functions.Pascal import pascal
-from functions.adv_list_generator import adv_list_generator
-from functions.product import product
-import time
+from calculator.services.dice_program.functions.diver import diver
+from calculator.services.dice_program.functions.Pascal import pascal
+from calculator.services.dice_program.functions.adv_list_generator import adv_list_generator
+from calculator.services.dice_program.functions.product import product
 
 class Control:
     def __init__(self, dice_list):
