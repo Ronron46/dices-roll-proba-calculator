@@ -16,7 +16,15 @@ class Control:
         self.res_min=0
         for dice in self.dice_list:
             self.res_min += int(dice[0]) 
-        a=diver(int(self.dice_list[0][0]),int(self.dice_list[0][1]),self.mem,self.tab,self.dice_list)
+        
+        a=diver(
+            int(self.dice_list[0][0]),
+            int(self.dice_list[0][1]),
+            self.mem,
+            self.tab,
+            self.dice_list,
+        )
+
         for i in a.keys():
             self.res.append(a[i])
 

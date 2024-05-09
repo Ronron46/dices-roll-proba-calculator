@@ -31,10 +31,9 @@ data=input("entre les dés au format '1d4 + 1d8 etc...'")
 time_start=time.time()
 dice_list=DataCleaner(data)
 control=Control(dice_list)
-timer=time.time() - time.time()
+timer=time.time() - time_start
 count = control.res
 res_min=control.res_min
-print(count)
 target=int(input("quel est la cible?"))
 combi=zero_counter(sum(count))
 graphe=Graphe(count)
