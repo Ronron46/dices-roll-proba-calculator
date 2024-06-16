@@ -10,7 +10,15 @@ def calculator(request):
         dice_list=DataCleaner(request.POST['output'])
         control=Control(dice_list)
         count=control.res
-        return render(request,'calculator/calc.html', {'form' : form, 'count' : count})
+        res_min=control.res_min
+        combi=sum(count)
+        for i in range(len(count)):
+            count[i]/=combi
+        abscisse = []
+        for i in range (len(count)):
+            abscisse.append(i+res_min)
+
+        return render(request,'calculator/calc.html', {'form' : form, 'count' : count, 'abs' : abscisse})
     else:
         form=OutputForm()
     return render(request, 'calculator/calc.html', {'form' : form})

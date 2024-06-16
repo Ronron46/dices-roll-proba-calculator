@@ -1,0 +1,45 @@
+
+
+{% load static %}
+
+
+<script type="text/javascript">
+function load(){
+    const ctx = document.getElementById("chart");
+    const data= JSON.parse(document.getElementById('count').innerText)
+    const abs = JSON.parse(document.getElementById('abs').innerText)   
+    console.log(typeof abs[0])
+
+    new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: abs,
+      datasets: [{
+        label: '# of Votes',
+        data: data,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        x:{
+            title: {
+                display: true,
+                text: 'outcome',
+            }
+        },
+        y: {
+            title: {
+                display: true,
+                text: 'probability',
+            }
+        }
+      }
+    }
+  });
+
+}
+
+
+
+</script>
