@@ -10,23 +10,15 @@ class Control:
         self.adv_list=dice_list.adv_list
         self.starter()
     def simple_calc(self):
-        self.mem={}
-        self.tab=[]
         self.res=[]
         self.res_min=0
         for dice in self.dice_list:
             self.res_min += int(dice[0]) 
+            dice_faces=[]
+            dice_faces=[1]*int(dice[1])
+            for i in range(int(dice[0])):
+                self.res = product(self.res, dice_faces)
         
-        a=diver(
-            int(self.dice_list[0][0]),
-            int(self.dice_list[0][1]),
-            self.mem,
-            self.tab,
-            self.dice_list,
-        )
-
-        for i in a.keys():
-            self.res.append(a[i])
 
 
     
