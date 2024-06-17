@@ -21,6 +21,7 @@ def calculator(request):
         combi=sum(count)
         for i in range(len(count)):
             count[i]/=combi
+            count[i]*=100
         total_comb = zero_counter(combi)
         abscisse = []
         for i in range (len(count)):
@@ -31,8 +32,17 @@ def calculator(request):
                 less.append(count[i])
             else:
                 less.append(less[i-1]+count[i])
+        more=[]
+        for i in range(len(count)):
+            if i==0:
+                more.append(100)
+            else:
+                more.append(more[i-1]-count[i-1])
+            
 
-        return render(request,'calculator/calc.html', {'form' : form, 'count' : count, 'abs' : abscisse, 'total_comb' : total_comb, 'timer' : timer, 'lis' : lis, 'less' : less})
+            
+
+        return render(request,'calculator/calc.html', {'form' : form, 'count' : count, 'abs' : abscisse, 'total_comb' : total_comb, 'timer' : timer, 'lis' : lis, 'less' : less, 'more' : more})
     else:
         form=OutputForm()
     return render(request, 'calculator/calc.html', {'form' : form})
