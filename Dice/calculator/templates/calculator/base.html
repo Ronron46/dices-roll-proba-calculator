@@ -6,9 +6,10 @@
         <link rel="stylesheet" href="{% static 'calculator/styles.css' %}" >
         {{count | json_script:"count"}}
         {{abs |json_script:"abs"}}
+        {{less |json_script:"less"}}
         {% include 'calculator/script.html' %}
     </head>
-    <body onload="load()">
+    <body >
 
         {% block content %} {% endblock %}
     </body>

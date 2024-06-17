@@ -6,12 +6,10 @@
 # from objects.data_cleaner import DataCleaner
 import time
 
-from functions.diver import diver
-from functions.Pascal import pascal
-from objects.proba import Calc_proba
+
 # from functions.control import control
-from objects.data_cleaner import DataCleaner
-from functions.zero_counter import zero_counter
+from .objects.Datacleaner import DataCleaner
+from .functions.zero_counter import zero_counter
 from objects.graphe import Graphe
 from objects.control import Control
 # dice_list=input('entrer la liste de dé à lancer, si vous voulez l\'avantage, ajouter un "a" collé au nombre par une virgule, pour un désavantage, mettez un "d". Exemple: 4,a 3 6 12,d...')

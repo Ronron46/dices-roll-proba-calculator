@@ -4,18 +4,20 @@
 
 
 <script type="text/javascript">
-function load(){
+  var chart = null
+document.addEventListener('DOMContentLoaded', (event) => {
     const ctx = document.getElementById("chart");
     const data= JSON.parse(document.getElementById('count').innerText)
     const abs = JSON.parse(document.getElementById('abs').innerText)   
     console.log(typeof abs[0])
 
-    new Chart(ctx, {
+    chart = new Chart(ctx, {
     type: 'bar',
+    label: 'output',
     data: {
       labels: abs,
       datasets: [{
-        label: '# of Votes',
+        label: 'output',
         data: data,
         borderWidth: 1
       }]
@@ -37,8 +39,46 @@ function load(){
       }
     }
   });
+  
+  
 
+});
+const less = JSON.parse(document.getElementById('less').innerText);
+const data= JSON.parse(document.getElementById('count').innerText);
+const more = less.toReversed()
+
+function less_than(){
+    console.log(less)
+    console.log(more)
+    chart.data.datasets =[{
+      label: 'less than',
+      data: less,
+    }]
+    chart.update()
+  
+}function more_than(){
+    console.log(less)
+    console.log(data)
+    chart.data.datasets =[{
+      label: 'more than',
+      data: more,
+    }]
+    chart.update()
+  
 }
+
+function output(){
+    console.log(less)
+    console.log(data)
+    chart.data.datasets =[{
+      label: 'output',
+      data: data,
+    }]
+    chart.update()
+  
+}
+
+
 
 
 
