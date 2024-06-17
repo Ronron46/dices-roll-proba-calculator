@@ -4,6 +4,7 @@ from calculator.forms import OutputForm
 from calculator.services.dice_program.objects.DataCleaner import DataCleaner
 from calculator.services.dice_program.objects.Control import Control
 from calculator.services.dice_program.functions.zero_counter import zero_counter
+from calculator.services.dice_program.objects.Graph import Graph
 import time
 
 def calculator(request):
@@ -16,33 +17,10 @@ def calculator(request):
         timer=time.time() - time_start
         timer=round(timer, 4)
         count=control.res
-        lis=control.res.copy()
         res_min=control.res_min
-        combi=sum(count)
-        for i in range(len(count)):
-            count[i]/=combi
-            count[i]*=100
-        total_comb = zero_counter(combi)
-        abscisse = []
-        for i in range (len(count)):
-            abscisse.append(i+res_min)
-        less=[]
-        for i in range(len(count)):
-            if i ==0:
-                less.append(count[i])
-            else:
-                less.append(less[i-1]+count[i])
-        more=[]
-        for i in range(len(count)):
-            if i==0:
-                more.append(100)
-            else:
-                more.append(more[i-1]-count[i-1])
-            
-
-            
-
-        return render(request,'calculator/calc.html', {'form' : form, 'count' : count, 'abs' : abscisse, 'total_comb' : total_comb, 'timer' : timer, 'lis' : lis, 'less' : less, 'more' : more})
+        graph=Graph(count, res_min)
+        abscisse, count, less, more, total_comb = graph.data()
+        return render(request,'calculator/calc.html', {'form' : form, 'count' : count, 'abs' : abscisse, 'total_comb' : total_comb, 'timer' : timer, 'less' : less, 'more' : more})
     else:
         form=OutputForm()
     return render(request, 'calculator/calc.html', {'form' : form})
