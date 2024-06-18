@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 from calculator.services.dice_program.functions.zero_counter import zero_counter
 
 
