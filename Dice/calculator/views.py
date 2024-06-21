@@ -11,7 +11,7 @@ def calculator(request):
     if request.method =='POST':
         time_start=time.time()
         form=OutputForm(request.POST)
-        dice_list=DataCleaner(request.POST['output'])
+        dice_list=DataCleaner(request.POST['dés'])
         time_start=time.time()
         control=Control(dice_list)
         timer=time.time() - time_start

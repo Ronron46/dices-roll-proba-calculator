@@ -6,24 +6,26 @@
 
 <h1> Dice calculator</h1>
 
-<p> enter your desired output :</p>
+<p> Entrez les dés à calculer :</p>
 
 <form action="" method="post">
     {% csrf_token %}
     {{form}}
-    <input type="submit" value="Calculate">
+    <br>
+    <input type="submit" value="Calcul">
 </form>
+
+<br>
 
 {% if request.method == 'POST'%}
 
-
-{% endif %}
-
-<p> il a fallu {{timer}} secondes pour calculer les {{total_comb}} combinaisons </p>
-
-<button onclick="output()"> output</button>  <button onclick="less_than()"> Moins que</button> <button onclick="more_than()"> Plus que</button>
+<button onclick="output()"> résultats</button> <button onclick="more_than()"> Plus que</button> <button onclick="less_than()"> Moins que</button>
 
 <br>
+
+<p> il a fallu {{timer}} secondes pour calculer les {{total_comb}} combinaisons </p>
+{% endif %}
+
 
 <canvas id="chart" width="800" height="300"></canvas>
 

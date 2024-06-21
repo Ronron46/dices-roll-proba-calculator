@@ -13,11 +13,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     chart = new Chart(ctx, {
     type: 'bar',
-    label: 'output',
+    label: 'résultats',
     data: {
       labels: abs,
       datasets: [{
-        label: 'output',
+        label: 'résultats',
         data: data,
         borderWidth: 1
       }]
@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
         x:{
             title: {
                 display: true,
-                text: 'outcome',
+                text: 'valeur',
             }
         },
         y: {
             title: {
                 display: true,
-                text: 'probability',
+                text: 'probabilité (en %)',
             }
         }
       }
@@ -51,7 +51,7 @@ function less_than(){
     console.log(less)
     console.log(more)
     chart.data.datasets =[{
-      label: 'less than',
+      label: 'moins que',
       data: less,
     }]
     chart.update()
@@ -60,7 +60,7 @@ function less_than(){
     console.log(less)
     console.log(data)
     chart.data.datasets =[{
-      label: 'more than',
+      label: 'plus que',
       data: more,
     }]
     chart.update()
@@ -71,7 +71,7 @@ function output(){
     console.log(less)
     console.log(data)
     chart.data.datasets =[{
-      label: 'output',
+      label: 'résultats',
       data: data,
     }]
     chart.update()
