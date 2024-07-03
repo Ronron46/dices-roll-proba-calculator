@@ -21,4 +21,5 @@ from calculator import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dice-calculator/', views.calculator, name='dice-calculator'),
+    path('notice/', views.notice, name='notice'),
 ]
