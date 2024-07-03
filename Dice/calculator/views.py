@@ -24,4 +24,6 @@ def calculator(request):
     else:
         form=OutputForm()
     return render(request, 'calculator/calc.html', {'form' : form})
-# Create your views here.
+
+def notice(request):
+    return render(request, 'calculator/notice.html')

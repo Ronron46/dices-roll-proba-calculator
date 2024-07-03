@@ -1,0 +1,35 @@
+<a href="{% url 'dice-calculator' %}"> retour </a>
+
+<h1> Mode d'emploi </h1>
+
+
+<ul>
+    <li>
+        les dés doivent être entré dans le champ 'Dés' sous la forme<br>
+        {nombre de dé}d{nombre de face}<br>
+
+        par exemple pour lancer 15 dé à 8 faces il faut entrer '15d8'
+    </li>
+    <br>
+    <li>
+        pour lancer des dés de différentes tailles, il suffit de séparer les groupes de dés par un '+' par exemple <br>
+        pour lancer 5 dés à 4 faces et 8 dés à 6 faces, il faut entrer <br>
+        '5d4 + 8d6'
+    </li>
+    <br>
+    <li>
+        pour ajouter un avantage aux dé il suffit de rajouter un 'A' devant le bon groupe de dé. Exemple 1:<br>
+        3 dé à 8 faces avec avantage s'écrit <br>
+        'A3d8'<br>
+        exemple 2:<br>
+        un dé à 6 faces avec avantage lancé avec 5 dés à 6 faces normaux s'écrit : <br>
+        'A1d6 + 5d6'
+    </li>
+    <br>
+    <li>
+        pour ajouter un désavantage, il suffit de suivre les mêmes règles que pour l'Avantage mais en mettant un 'D' à la place du 'A'. Par exemple:<br>
+        un dé à 20 face avec désavantage lancé avec 2 dé à quatre face s'écrit:<br>
+        'D1d20 + 2d4'
+    </li>
+</ul>
+
