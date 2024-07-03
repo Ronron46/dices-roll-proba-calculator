@@ -1,0 +1,85 @@
+
+
+{% load static %}
+
+
+<script type="text/javascript">
+  var chart = null
+document.addEventListener('DOMContentLoaded', (event) => {
+    const ctx = document.getElementById("chart");
+    const data= JSON.parse(document.getElementById('count').innerText)
+    const abs = JSON.parse(document.getElementById('abs').innerText)   
+    console.log(typeof abs[0])
+
+    chart = new Chart(ctx, {
+    type: 'bar',
+    label: 'résultats',
+    data: {
+      labels: abs,
+      datasets: [{
+        label: 'résultats',
+        data: data,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        x:{
+            title: {
+                display: true,
+                text: 'valeur',
+            }
+        },
+        y: {
+            title: {
+                display: true,
+                text: 'probabilité (en %)',
+            }
+        }
+      }
+    }
+  });
+  
+  
+
+});
+const less = JSON.parse(document.getElementById('less').innerText);
+const data= JSON.parse(document.getElementById('count').innerText);
+const more = JSON.parse(document.getElementById('more').innerText)
+
+function less_than(){
+    console.log(less)
+    console.log(more)
+    chart.data.datasets =[{
+      label: 'moins que',
+      data: less,
+    }]
+    chart.update()
+  
+}function more_than(){
+    console.log(less)
+    console.log(data)
+    chart.data.datasets =[{
+      label: 'plus que',
+      data: more,
+    }]
+    chart.update()
+  
+}
+
+function output(){
+    console.log(less)
+    console.log(data)
+    chart.data.datasets =[{
+      label: 'résultats',
+      data: data,
+    }]
+    chart.update()
+  
+}
+
+
+
+
+
+</script>

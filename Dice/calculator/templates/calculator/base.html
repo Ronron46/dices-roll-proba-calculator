@@ -1,0 +1,17 @@
+{% load static %}
+<html>
+    <head>
+        <title> Dice calculator </title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
+        <link rel="stylesheet" href="{% static 'calculator/styles.css' %}" >
+        {{count | json_script:"count"}}
+        {{abs |json_script:"abs"}}
+        {{less |json_script:"less"}}
+        {{more |json_script:"more"}}
+        {% include 'calculator/script.html' %}
+    </head>
+    <body >
+
+        {% block content %} {% endblock %}
+    </body>
+</html>
