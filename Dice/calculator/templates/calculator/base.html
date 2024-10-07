@@ -11,6 +11,12 @@
         {% include 'calculator/script.html' %}
     </head>
     <body >
+        <header>
+            <h1> Dice calculator</h1>
+            <nav>
+                <a href="{% url 'notice' %}">mode d'emploi</a>
+            </nav>
+        </header>
 
         {% block content %} {% endblock %}
     </body>

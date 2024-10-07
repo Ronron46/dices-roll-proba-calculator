@@ -2,33 +2,41 @@
 {% load static %}
 
 {% block content %}
+{% if request.method == 'POST'%}
+<p class="flex"> il a fallu {{timer}} secondes pour calculer les {{total_comb}} combinaisons </p>
+{% endif %}
+<div class="form">
+    <p class="text_form"> Entrez les dés à calculer :</p>
+    <form action="" method="post">
+            {% csrf_token %}
+            {{form}}
+        <br>
+        <a class="clique" >
+            <input type="submit" value="Calcul">
+        </a>
+    </form>
 
-<a href="{% url 'notice' %}">mode d'emploi</a>
-<h1> Dice calculator</h1>
-
-<p> Entrez les dés à calculer :</p>
-
-<form action="" method="post">
-    {% csrf_token %}
-    {{form}}
     <br>
-    <input type="submit" value="Calcul">
-</form>
+</div>
+<section class="chartsec">
+    <div class="row1">
+        <a class="cchart1"><canvas id="chart1" height="396px" width="780px"></canvas></a>
+    </div>
+    <div class="row2">
+        <a class="cchart2"><canvas id="chart2" height="396px" width="780px"></canvas></a>
+        <a class="cchart3"><canvas id="chart3" height="396px" width="780px"></canvas></a>
+    </div>
 
-<br>
+</section>
 
 {% if request.method == 'POST'%}
 
-<button onclick="output()"> résultats</button> <button onclick="more_than()"> Plus que</button> <button onclick="less_than()"> Moins que</button>
-
 <br>
 
-<p> il a fallu {{timer}} secondes pour calculer les {{total_comb}} combinaisons </p>
+
 
 {% endif %}
 
-
-<canvas id="chart" width="800" height="300"></canvas>
 
 
 {% endblock %}

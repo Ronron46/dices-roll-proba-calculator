@@ -7,6 +7,9 @@
   var chart = null
 document.addEventListener('DOMContentLoaded', (event) => {
     const ctx = document.getElementById("chart");
+    const ctx1 = document.getElementById("chart1");
+    const ctx2 = document.getElementById("chart2");
+    const ctx3 = document.getElementById("chart3");
     const data= JSON.parse(document.getElementById('count').innerText)
     const abs = JSON.parse(document.getElementById('abs').innerText)   
     console.log(typeof abs[0])
@@ -18,6 +21,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       labels: abs,
       datasets: [{
         label: 'résultats',
+        bordercolor:'#712',
         data: data,
         borderWidth: 1
       }]
@@ -40,45 +44,165 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
   });
   
-  
+  chart = new Chart(ctx1, {
+    type: 'bar',
+    label: 'résultats',
+    data: {
+      labels: abs,
+      datasets: [{
+        label: 'résultats',
+        data: data,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      plugins:{
+        legend: {
+        labels: {
+          color:'rgba(0,0,0,0.7)',
+          fontSize: 22,
+        },
+      },
+      },
+      scales: {
+        x:{
+          grid: {
+          color:'rgba(0,0,0,0.5)',
+          },
+          ticks:{
+            color:'rgba(0,0,0,0.7)',
+          },
+          title: {
+              display: true,
+              text: 'valeur',
+              color: 'rgba(0,0,0,0.7)',
+          }
+        },
+        y:{
+          grid: {
+          color:'rgba(0,0,0,0.5)',
+          },
+          ticks:{
+            color:'rgba(0,0,0,0.7)',
+          },
+          title: {
+              display: true,
+              text: 'probabilité (en %)',
+              color: 'rgba(0,0,0,0.7)',
+          }
+        }
+      }
+    }
+  });
+
+  chart = new Chart(ctx2, {
+    type: 'bar',
+    label: 'résultats',
+    data: {
+      labels: abs,
+      datasets: [{
+        label: 'moins que',
+        bordercolor:'#712',
+        data: less,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      plugins:{
+        legend: {
+        labels: {
+          color:'rgba(0,0,0,0.7)',
+          fontSize: 22,
+        },
+      },
+      },
+      scales: {
+        x:{
+          grid: {
+          color:'rgba(0,0,0,0.5)',
+          },
+          ticks:{
+            color:'rgba(0,0,0,0.7)',
+          },
+          title: {
+              display: true,
+              text: 'valeur',
+              color: 'rgba(0,0,0,0.7)',
+          }
+        },
+        y:{
+          grid: {
+          color:'rgba(0,0,0,0.5)',
+          },
+          ticks:{
+            color:'rgba(0,0,0,0.7)',
+          },
+          title: {
+              display: true,
+              text: 'probabilité (en %)',
+              color: 'rgba(0,0,0,0.7)',
+          }
+        }
+      }
+    }
+  });
+
+  chart = new Chart(ctx3, {
+    type: 'bar',
+    label: 'résultats',
+    data: {
+      labels: abs,
+      datasets: [{
+        label: 'plus que',
+        bordercolor:'#712',
+        data: more,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      plugins:{
+        legend: {
+        labels: {
+          color:'rgba(0,0,0,0.7)',
+          fontSize: 22,
+        },
+      },
+      },
+      scales: {
+        x:{
+          grid: {
+          color:'rgba(0,0,0,0.5)',
+          },
+          ticks:{
+            color:'rgba(0,0,0,0.7)',
+          },
+          title: {
+              display: true,
+              text: 'valeur',
+              color: 'rgba(0,0,0,0.7)',
+          }
+        },
+        y:{
+          grid: {
+          color:'rgba(0,0,0,0.5)',
+          },
+          ticks:{
+            color:'rgba(0,0,0,0.7)',
+          },
+          title: {
+              display: true,
+              text: 'probabilité (en %)',
+              color: 'rgba(0,0,0,0.7)',
+          }
+        }
+      }
+    }
+  });
 
 });
 const less = JSON.parse(document.getElementById('less').innerText);
 const data= JSON.parse(document.getElementById('count').innerText);
 const more = JSON.parse(document.getElementById('more').innerText)
-
-function less_than(){
-    console.log(less)
-    console.log(more)
-    chart.data.datasets =[{
-      label: 'moins que',
-      data: less,
-    }]
-    chart.update()
-  
-}function more_than(){
-    console.log(less)
-    console.log(data)
-    chart.data.datasets =[{
-      label: 'plus que',
-      data: more,
-    }]
-    chart.update()
-  
-}
-
-function output(){
-    console.log(less)
-    console.log(data)
-    chart.data.datasets =[{
-      label: 'résultats',
-      data: data,
-    }]
-    chart.update()
-  
-}
-
-
 
 
 
