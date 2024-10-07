@@ -18,7 +18,7 @@ header h1 {
     margin: 10px;
 }
 
-header nav {
+.btn1 {
     margin-right: 10px;
     padding: 5px;
     background-color: rgb(39, 194, 194);
@@ -71,8 +71,6 @@ header nav {
 .flex {
     background-color: rgb(1,49,70);
     color: white;
-    display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     border-radius: 30px;
