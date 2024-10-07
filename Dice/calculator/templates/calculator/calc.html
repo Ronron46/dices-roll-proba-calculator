@@ -2,9 +2,13 @@
 {% load static %}
 
 {% block content %}
+
+<section class="cform">
+    <a class="invisible">
 {% if request.method == 'POST'%}
 <p class="flex"> il a fallu {{timer}} secondes pour calculer les {{total_comb}} combinaisons </p>
 {% endif %}
+</a>
 <div class="form">
     <p class="text_form"> Entrez les dés à calculer :</p>
     <form action="" method="post">
@@ -18,6 +22,10 @@
 
     <br>
 </div>
+</section>
+
+
+
 <section class="chartsec">
     <div class="row1">
         <a class="cchart1"><canvas id="chart1" height="396px" width="780px"></canvas></a>
